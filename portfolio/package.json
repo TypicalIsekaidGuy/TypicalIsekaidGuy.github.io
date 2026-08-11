@@ -1,0 +1,9 @@
+{
+  "name": "zhokhov-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Лендинг-портфолио Сергея Жохова (Flutter Web)",
+  "scripts": {
+    "dev": "node dev-server.js"
+  }
+}

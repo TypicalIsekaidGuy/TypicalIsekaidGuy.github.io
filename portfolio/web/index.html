@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Сергей Жохов — Android Developer. 5+ лет опыта: Kotlin, Jetpack Compose, Clean Architecture. Портфолио и контакты.">
+  <meta name="theme-color" content="#070B16">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Сергей Жохов — Android Developer">
+  <meta property="og:description" content="Android-разработчик с опытом 5+ лет. Kotlin, Compose, Coroutines, Clean Architecture.">
+  <meta property="og:type" content="website">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Сергей Жохов">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Сергей Жохов — Android Developer</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #070B16;
+    }
+    /* Простой экран загрузки, пока Flutter инициализируется */
+    #splash {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #070B16;
+      color: #9AA7C7;
+      font-family: monospace;
+      z-index: 9999;
+      transition: opacity .4s ease;
+    }
+    #splash .logo {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #7C6CFF, #4FC3F7, #3DDC97);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 18px;
+    }
+    #splash .spinner {
+      width: 34px;
+      height: 34px;
+      border: 3px solid #223055;
+      border-top-color: #3DDC97;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="splash">
+    <div class="logo">SJ.dev</div>
+    <div class="spinner"></div>
+  </div>
+  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    // Убираем сплэш после первого кадра Flutter
+    window.addEventListener('flutter-first-frame', function () {
+      var splash = document.getElementById('splash');
+      if (splash) {
+        splash.style.opacity = '0';
+        setTimeout(function () { splash.remove(); }, 450);
+      }
+    });
+  </script>
+</body>
+</html>
