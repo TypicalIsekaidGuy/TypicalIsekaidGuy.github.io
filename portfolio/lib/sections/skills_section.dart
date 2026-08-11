@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/portfolio_data.dart';
+import '../l10n/app_localizations.dart';
 import '../theme.dart';
 import '../widgets/reveal.dart';
 import '../widgets/section_header.dart';
@@ -11,8 +12,18 @@ class SkillsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final width = MediaQuery.of(context).size.width;
     final compact = width < 860;
+
+    final titles = [
+      l10n.skillGroup1,
+      l10n.skillGroup2,
+      l10n.skillGroup3,
+      l10n.skillGroup4,
+      l10n.skillGroup5,
+      l10n.skillGroup6,
+    ];
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -22,18 +33,23 @@ class SkillsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Reveal(child: SectionHeader(label: 'Стек', title: 'Навыки')),
+          Reveal(
+            child:
+                SectionHeader(label: l10n.skillsLabel, title: l10n.skillsTitle),
+          ),
           const SizedBox(height: 40),
           Wrap(
             spacing: 20,
             runSpacing: 20,
             children: [
-              for (int i = 0; i < PortfolioData.skillGroups.length; i++)
+              for (int i = 0; i < PortfolioData.skillNames.length; i++)
                 Reveal(
                   delay: Duration(milliseconds: 90 * i),
                   child: SizedBox(
                     width: compact ? double.infinity : 360,
-                    child: _SkillGroupCard(group: PortfolioData.skillGroups[i]),
+                    child: _SkillGroupCard(
+                      group: SkillGroup(titles[i], PortfolioData.skillNames[i]),
+                    ),
                   ),
                 ),
             ],

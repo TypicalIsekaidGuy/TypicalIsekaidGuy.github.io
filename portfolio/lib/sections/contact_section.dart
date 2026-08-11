@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../data/portfolio_data.dart';
+import '../l10n/app_localizations.dart';
 import '../theme.dart';
 import '../widgets/reveal.dart';
 import '../widgets/section_header.dart';
@@ -12,6 +13,7 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final width = MediaQuery.of(context).size.width;
     final compact = width < 760;
 
@@ -23,47 +25,44 @@ class ContactSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Reveal(
-            child: SectionHeader(label: 'Контакты', title: 'Давайте работать вместе'),
+          Reveal(
+            child: SectionHeader(
+                label: l10n.contactsLabel, title: l10n.contactsTitle),
           ),
           const SizedBox(height: 20),
           Reveal(
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 560),
-              child: Text(
-                'Предпочитаемый способ связи — Telegram. '
-                'Отвечаю быстро, открыт к интересным проектам.',
-                style: AppTheme.body(size: 17),
-              ),
+              child: Text(l10n.contactsDesc, style: AppTheme.body(size: 17)),
             ),
           ),
           const SizedBox(height: 36),
           Wrap(
             spacing: 18,
             runSpacing: 18,
-            children: const [
+            children: [
               _ContactCard(
                 icon: Icons.send_rounded,
-                title: 'Telegram',
+                title: l10n.contactTelegramTitle,
                 value: PortfolioData.telegramHandle,
                 url: PortfolioData.telegramUrl,
               ),
               _ContactCard(
                 icon: Icons.alternate_email_rounded,
-                title: 'Email',
+                title: l10n.contactEmailTitle,
                 value: PortfolioData.email,
                 url: PortfolioData.emailUrl,
               ),
               _ContactCard(
                 icon: Icons.phone_iphone_rounded,
-                title: 'Телефон',
+                title: l10n.contactPhoneTitle,
                 value: PortfolioData.phone,
                 url: PortfolioData.phoneUrl,
               ),
               _ContactCard(
                 icon: Icons.location_on_rounded,
-                title: 'Локация',
-                value: '${PortfolioData.location} · гибрид / удалённо',
+                title: l10n.contactLocationTitle,
+                value: l10n.contactLocationValue,
                 url: null,
               ),
             ],
@@ -80,12 +79,12 @@ class ContactSection extends StatelessWidget {
                 children: [
                   Flexible(
                     child: Text(
-                      '© 2026 ${PortfolioData.name}. Сделано на Flutter 💙',
+                      l10n.footerMadeWith,
                       style: AppTheme.mono(size: 12, color: AppTheme.textMuted),
                     ),
                   ),
                   Text(
-                    'resume.pdf обновлено 10.08.2026',
+                    l10n.footerResumeUpdated,
                     style: AppTheme.mono(size: 12, color: AppTheme.textMuted),
                   ),
                 ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/portfolio_data.dart';
+import '../l10n/app_localizations.dart';
 import '../theme.dart';
 import '../widgets/reveal.dart';
 import '../widgets/section_header.dart';
@@ -11,8 +12,22 @@ class AboutSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final width = MediaQuery.of(context).size.width;
     final compact = width < 860;
+
+    final facts = [
+      l10n.aboutFact1,
+      l10n.aboutFact2,
+      l10n.aboutFact3,
+      l10n.aboutFact4,
+    ];
+    final statLabels = [
+      l10n.stat1Label,
+      l10n.stat2Label,
+      l10n.stat3Label,
+      l10n.stat4Label,
+    ];
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -22,7 +37,9 @@ class AboutSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Reveal(child: SectionHeader(label: 'Обо мне', title: 'Кто я')),
+          Reveal(
+            child: SectionHeader(label: l10n.aboutLabel, title: l10n.aboutTitle),
+          ),
           const SizedBox(height: 40),
           Flex(
             direction: compact ? Axis.vertical : Axis.horizontal,
@@ -35,9 +52,9 @@ class AboutSection extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(PortfolioData.about, style: AppTheme.body(size: 17)),
+                      Text(l10n.aboutText, style: AppTheme.body(size: 17)),
                       const SizedBox(height: 24),
-                      ...PortfolioData.aboutFacts.map(
+                      ...facts.map(
                         (f) => Padding(
                           padding: const EdgeInsets.only(bottom: 12),
                           child: Row(
@@ -60,7 +77,7 @@ class AboutSection extends StatelessWidget {
                 flex: 2,
                 child: Reveal(
                   delay: const Duration(milliseconds: 200),
-                  child: _StatsGrid(compact: compact),
+                  child: _StatsGrid(compact: compact, labels: statLabels),
                 ),
               ),
             ],
@@ -73,7 +90,8 @@ class AboutSection extends StatelessWidget {
 
 class _StatsGrid extends StatelessWidget {
   final bool compact;
-  const _StatsGrid({required this.compact});
+  final List<String> labels;
+  const _StatsGrid({required this.compact, required this.labels});
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +103,8 @@ class _StatsGrid extends StatelessWidget {
       crossAxisSpacing: 16,
       childAspectRatio: compact ? 1.35 : 1.1,
       children: [
-        for (final s in PortfolioData.stats) _StatCard(item: s),
+        for (int i = 0; i < PortfolioData.stats.length; i++)
+          _StatCard(item: PortfolioData.stats[i], label: labels[i]),
       ],
     );
   }
@@ -93,7 +112,8 @@ class _StatsGrid extends StatelessWidget {
 
 class _StatCard extends StatefulWidget {
   final StatItem item;
-  const _StatCard({required this.item});
+  final String label;
+  const _StatCard({required this.item, required this.label});
 
   @override
   State<_StatCard> createState() => _StatCardState();
@@ -167,7 +187,7 @@ class _StatCardState extends State<_StatCard>
             ),
             const SizedBox(height: 8),
             Text(
-              item.label,
+              widget.label,
               style: AppTheme.body(size: 13).copyWith(height: 1.4),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,

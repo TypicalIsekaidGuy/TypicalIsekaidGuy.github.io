@@ -3,13 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../data/portfolio_data.dart';
+import '../l10n/app_localizations.dart';
 import '../theme.dart';
 import '../widgets/reveal.dart';
 import '../widgets/section_header.dart';
 
 /// Интерактивный терминал — «фишка» сайта.
-/// Посетитель может ввести команды: help, about, skills, experience,
-/// contacts, resume, whoami, clear...
+/// Команды: help, about, skills, experience, contacts,
+/// resume, telegram, whoami, sudo, clear.
 class TerminalSection extends StatefulWidget {
   const TerminalSection({super.key});
 
@@ -31,17 +32,18 @@ class _TerminalSectionState extends State<TerminalSection> {
   final List<_TerminalLine> _lines = [];
   final List<String> _history = [];
   int _historyIndex = -1;
+  bool _welcomed = false;
 
   static const String _prompt = 'visitor@sergey:~';
 
   @override
-  void initState() {
-    super.initState();
-    _print([
-      'Добро пожаловать в portfolio-terminal v1.0.0',
-      'Это интерактивная консоль. Введите "help", чтобы увидеть команды.',
-      '',
-    ], AppTheme.textMuted);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_welcomed) {
+      _welcomed = true;
+      final l10n = AppLocalizations.of(context);
+      _print([l10n.termWelcome1, l10n.termWelcome2, ''], AppTheme.textMuted);
+    }
   }
 
   @override
@@ -72,6 +74,7 @@ class _TerminalSectionState extends State<TerminalSection> {
   }
 
   void _run(String raw) {
+    final l10n = AppLocalizations.of(context);
     final cmd = raw.trim();
     setState(() {
       _lines.add(_TerminalLine('$_prompt \$ $cmd', AppTheme.textPrimary,
@@ -85,58 +88,64 @@ class _TerminalSectionState extends State<TerminalSection> {
     switch (name) {
       case 'help':
         _print([
-          'Доступные команды:',
-          '  about        — кто такой Сергей',
-          '  skills       — технологический стек',
-          '  experience   — опыт работы',
-          '  contacts     — как связаться',
-          '  resume       — скачать резюме (PDF)',
-          '  telegram     — открыть Telegram',
-          '  whoami       — а вы кто?',
-          '  clear        — очистить терминал',
+          l10n.termHelpHeader,
+          l10n.termHelpAbout,
+          l10n.termHelpSkills,
+          l10n.termHelpExperience,
+          l10n.termHelpContacts,
+          l10n.termHelpResume,
+          l10n.termHelpTelegram,
+          l10n.termHelpWhoami,
+          l10n.termHelpClear,
         ], AppTheme.textSecondary);
       case 'about':
-        _print([PortfolioData.about, ''], AppTheme.textSecondary);
+        _print([l10n.aboutText, ''], AppTheme.textSecondary);
         _print(
-            ['Локация: ${PortfolioData.location} · Опыт: ${PortfolioData.experience}'],
-            AppTheme.accentBlue);
+          [l10n.termLocationLine(PortfolioData.locationShort, l10n.termExperienceYears)],
+          AppTheme.accentBlue,
+        );
       case 'skills':
-        for (final g in PortfolioData.skillGroups) {
-          _print(['${g.title}: ${g.skills.join(", ")}'], AppTheme.textSecondary);
+        final titles = [
+          l10n.skillGroup1, l10n.skillGroup2, l10n.skillGroup3,
+          l10n.skillGroup4, l10n.skillGroup5, l10n.skillGroup6,
+        ];
+        for (int i = 0; i < titles.length; i++) {
+          _print(['${titles[i]}: ${PortfolioData.skillNames[i].join(", ")}'],
+              AppTheme.textSecondary);
         }
       case 'experience':
-        for (final j in PortfolioData.jobs) {
-          _print([
-            '● ${j.company} — ${j.role}',
-            '  ${j.period} (${j.duration})',
-          ], j.isCurrent ? AppTheme.accent : AppTheme.textSecondary);
+        final jobs = [
+          (PortfolioData.companies[0], l10n.job1Role, l10n.job1Period, l10n.job1Duration, true),
+          (PortfolioData.companies[1], l10n.job2Role, l10n.job2Period, l10n.job2Duration, false),
+          (PortfolioData.companies[2], l10n.job3Role, l10n.job3Period, l10n.job3Duration, false),
+        ];
+        for (final j in jobs) {
+          _print(
+            ['● ${j.$1} — ${j.$2}', '  ${j.$3} (${j.$4})'],
+            j.$5 ? AppTheme.accent : AppTheme.textSecondary,
+          );
         }
       case 'contacts':
         _print([
-          'Telegram : ${PortfolioData.telegramHandle}',
-          'Email    : ${PortfolioData.email}',
-          'Телефон  : ${PortfolioData.phone}',
+          l10n.termContactsTelegram(PortfolioData.telegramHandle),
+          l10n.termContactsEmail(PortfolioData.email),
+          l10n.termContactsPhone(PortfolioData.phone),
         ], AppTheme.textSecondary);
       case 'resume':
-        _print(['Открываю резюме...'], AppTheme.accent);
+        _print([l10n.termOpeningResume], AppTheme.accent);
         launchUrl(Uri.parse(PortfolioData.resumeAsset));
       case 'telegram':
-        _print(['Открываю Telegram...'], AppTheme.accent);
+        _print([l10n.termOpeningTelegram], AppTheme.accent);
         launchUrl(Uri.parse(PortfolioData.telegramUrl),
             mode: LaunchMode.externalApplication);
       case 'whoami':
-        _print([
-          'Рекрутер? Тимлид? В любом случае — добро пожаловать :)',
-          'Попробуйте команду "contacts", чтобы связаться с Сергеем.',
-        ], AppTheme.textSecondary);
+        _print([l10n.termWhoami1, l10n.termWhoami2], AppTheme.textSecondary);
       case 'sudo':
-        _print(['Сергей уже root в своём коде.'], AppTheme.accent);
+        _print([l10n.termSudo], AppTheme.accent);
       case 'clear':
         setState(_lines.clear);
       default:
-        _print([
-          'Команда не найдена: $name. Введите "help" для списка команд.'
-        ], const Color(0xFFFF6B81));
+        _print([l10n.termNotFound(name)], const Color(0xFFFF6B81));
     }
     _input.clear();
     _focus.requestFocus();
@@ -147,8 +156,7 @@ class _TerminalSectionState extends State<TerminalSection> {
     setState(() {
       _historyIndex--;
       _input.text = _history[_historyIndex];
-      _input.selection =
-          TextSelection.collapsed(offset: _input.text.length);
+      _input.selection = TextSelection.collapsed(offset: _input.text.length);
     });
   }
 
@@ -163,8 +171,7 @@ class _TerminalSectionState extends State<TerminalSection> {
     setState(() {
       _historyIndex++;
       _input.text = _history[_historyIndex];
-      _input.selection =
-          TextSelection.collapsed(offset: _input.text.length);
+      _input.selection = TextSelection.collapsed(offset: _input.text.length);
     });
   }
 
@@ -184,6 +191,7 @@ class _TerminalSectionState extends State<TerminalSection> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final width = MediaQuery.of(context).size.width;
     final compact = width < 760;
 
@@ -196,18 +204,13 @@ class _TerminalSectionState extends State<TerminalSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Reveal(
+          Reveal(
             child: SectionHeader(
-                label: 'Фишка', title: 'Поговорите с моим терминалом'),
+                label: l10n.terminalLabel, title: l10n.terminalTitle),
           ),
           const SizedBox(height: 16),
           Reveal(
-            child: Text(
-              'Маленький интерактив: введите help и пообщайтесь с консолью — '
-              'она расскажет обо мне всё то же, но в формате, который '
-              'понятен разработчику.',
-              style: AppTheme.body(),
-            ),
+            child: Text(l10n.terminalDesc, style: AppTheme.body()),
           ),
           const SizedBox(height: 32),
           Reveal(
@@ -264,10 +267,7 @@ class _TerminalSectionState extends State<TerminalSection> {
                           final line = _lines[i];
                           return SelectableText(
                             line.text.isEmpty ? ' ' : line.text,
-                            style: AppTheme.mono(
-                              size: 13.5,
-                              color: line.color,
-                            ),
+                            style: AppTheme.mono(size: 13.5, color: line.color),
                           );
                         },
                       ),
@@ -278,10 +278,7 @@ class _TerminalSectionState extends State<TerminalSection> {
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 14),
                     child: Row(
                       children: [
-                        Text(
-                          '$_prompt \$ ',
-                          style: AppTheme.mono(size: 13.5),
-                        ),
+                        Text('$_prompt \$ ', style: AppTheme.mono(size: 13.5)),
                         Expanded(
                           child: Focus(
                             onKeyEvent: _onKey,
@@ -295,8 +292,7 @@ class _TerminalSectionState extends State<TerminalSection> {
                                 border: InputBorder.none,
                                 isDense: true,
                                 hintText: 'help',
-                                hintStyle:
-                                    TextStyle(color: AppTheme.textMuted),
+                                hintStyle: TextStyle(color: AppTheme.textMuted),
                               ),
                               onSubmitted: _run,
                             ),

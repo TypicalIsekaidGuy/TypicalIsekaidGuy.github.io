@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/portfolio_data.dart';
+import '../l10n/app_localizations.dart';
 import '../theme.dart';
 import '../widgets/reveal.dart';
 import '../widgets/section_header.dart';
@@ -9,10 +10,56 @@ import '../widgets/section_header.dart';
 class ExperienceSection extends StatelessWidget {
   const ExperienceSection({super.key});
 
+  List<ExperienceItem> _jobs(AppLocalizations l10n) => [
+        ExperienceItem(
+          period: l10n.job1Period,
+          duration: l10n.job1Duration,
+          company: PortfolioData.companies[0],
+          role: l10n.job1Role,
+          isCurrent: true,
+          points: [
+            l10n.job1Point1,
+            l10n.job1Point2,
+            l10n.job1Point3,
+            l10n.job1Point4,
+            l10n.job1Point5,
+          ],
+        ),
+        ExperienceItem(
+          period: l10n.job2Period,
+          duration: l10n.job2Duration,
+          company: PortfolioData.companies[1],
+          role: l10n.job2Role,
+          isCurrent: false,
+          points: [
+            l10n.job2Point1,
+            l10n.job2Point2,
+            l10n.job2Point3,
+            l10n.job2Point4,
+          ],
+        ),
+        ExperienceItem(
+          period: l10n.job3Period,
+          duration: l10n.job3Duration,
+          company: PortfolioData.companies[2],
+          role: l10n.job3Role,
+          isCurrent: false,
+          points: [
+            l10n.job3Point1,
+            l10n.job3Point2,
+            l10n.job3Point3,
+            l10n.job3Point4,
+            l10n.job3Point5,
+          ],
+        ),
+      ];
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final width = MediaQuery.of(context).size.width;
     final compact = width < 760;
+    final jobs = _jobs(l10n);
 
     return Container(
       color: AppTheme.bgAlt.withValues(alpha: 0.6),
@@ -23,17 +70,18 @@ class ExperienceSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Reveal(
-            child: SectionHeader(label: 'Опыт', title: 'Где я работал'),
+          Reveal(
+            child: SectionHeader(label: l10n.expLabel, title: l10n.expTitle),
           ),
           const SizedBox(height: 48),
-          ...List.generate(PortfolioData.jobs.length, (i) {
+          ...List.generate(jobs.length, (i) {
             return Reveal(
               delay: Duration(milliseconds: 120 * i),
               child: _TimelineEntry(
-                item: PortfolioData.jobs[i],
-                isLast: i == PortfolioData.jobs.length - 1,
+                item: jobs[i],
+                isLast: i == jobs.length - 1,
                 compact: compact,
+                currentBadge: l10n.currentBadge,
               ),
             );
           }),
@@ -47,11 +95,13 @@ class _TimelineEntry extends StatefulWidget {
   final ExperienceItem item;
   final bool isLast;
   final bool compact;
+  final String currentBadge;
 
   const _TimelineEntry({
     required this.item,
     required this.isLast,
     required this.compact,
+    required this.currentBadge,
   });
 
   @override
@@ -153,7 +203,7 @@ class _TimelineEntryState extends State<_TimelineEntry> {
                                 ),
                               ),
                               child: Text(
-                                'сейчас',
+                                widget.currentBadge,
                                 style: AppTheme.mono(
                                     size: 11, color: AppTheme.accent),
                               ),

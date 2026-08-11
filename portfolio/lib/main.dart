@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'data/portfolio_data.dart';
+import 'l10n/app_localizations.dart';
 import 'sections/about_section.dart';
 import 'sections/contact_section.dart';
 import 'sections/experience_section.dart';
@@ -15,14 +15,27 @@ void main() {
   runApp(const PortfolioApp());
 }
 
-class PortfolioApp extends StatelessWidget {
+class PortfolioApp extends StatefulWidget {
   const PortfolioApp({super.key});
+
+  @override
+  State<PortfolioApp> createState() => _PortfolioAppState();
+}
+
+class _PortfolioAppState extends State<PortfolioApp> {
+  /// Основной язык сайта — английский. Переключается в NavBar.
+  Locale _locale = const Locale('en');
+
+  void _setLocale(Locale locale) => setState(() => _locale = locale);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '${PortfolioData.name} — ${PortfolioData.role}',
+      onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
       debugShowCheckedModeBanner: false,
+      locale: _locale,
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       theme: ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: AppTheme.bg,
@@ -33,13 +46,20 @@ class PortfolioApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const LandingPage(),
+      home: LandingPage(locale: _locale, onLocaleChanged: _setLocale),
     );
   }
 }
 
 class LandingPage extends StatelessWidget {
-  const LandingPage({super.key});
+  final Locale locale;
+  final ValueChanged<Locale> onLocaleChanged;
+
+  const LandingPage({
+    super.key,
+    required this.locale,
+    required this.onLocaleChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +69,11 @@ class LandingPage extends StatelessWidget {
       body: AuroraBackground(
         child: Column(
           children: [
-            NavBar(sectionKeys: sectionKeys),
+            NavBar(
+              sectionKeys: sectionKeys,
+              locale: locale,
+              onLocaleChanged: onLocaleChanged,
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(

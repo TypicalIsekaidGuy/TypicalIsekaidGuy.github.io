@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/portfolio_data.dart';
+import '../l10n/app_localizations.dart';
 import '../theme.dart';
 import '../widgets/app_button.dart';
 import '../widgets/typewriter.dart';
@@ -11,6 +12,7 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final width = MediaQuery.of(context).size.width;
     final compact = width < 760;
     final nameSize = compact ? 36.0 : (width < 1100 ? 48.0 : 64.0);
@@ -43,19 +45,20 @@ class HeroSection extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Открыт к предложениям',
+                  l10n.heroBadge,
                   style: AppTheme.mono(size: 12, color: AppTheme.accent),
                 ),
               ],
             ),
           ),
           const SizedBox(height: 28),
-          Text('Привет, я', style: AppTheme.subtitle(size: compact ? 17 : 20)),
+          Text(l10n.heroGreeting,
+              style: AppTheme.subtitle(size: compact ? 17 : 20)),
           const SizedBox(height: 6),
           ShaderMask(
             shaderCallback: (r) => AppTheme.heroGradient.createShader(r),
             child: Text(
-              PortfolioData.name,
+              l10n.heroName,
               style: AppTheme.display(context, size: nameSize)
                   .copyWith(color: Colors.white),
             ),
@@ -64,7 +67,13 @@ class HeroSection extends StatelessWidget {
           SizedBox(
             height: compact ? 34 : 44,
             child: Typewriter(
-              texts: PortfolioData.typingRoles,
+              key: ValueKey(Localizations.localeOf(context).languageCode),
+              texts: [
+                l10n.heroTyping1,
+                l10n.heroTyping2,
+                l10n.heroTyping3,
+                l10n.heroTyping4,
+              ],
               style: AppTheme.mono(
                 size: compact ? 18 : 26,
                 color: AppTheme.textPrimary,
@@ -75,8 +84,7 @@ class HeroSection extends StatelessWidget {
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 560),
             child: Text(
-              'Разрабатываю Android-приложения больше 5 лет: от legacy-рефакторинга '
-              'до кастомных анимаций и биллинга. ${PortfolioData.location}.',
+              l10n.heroIntro,
               style: AppTheme.body(size: compact ? 15 : 17),
             ),
           ),
@@ -84,20 +92,20 @@ class HeroSection extends StatelessWidget {
           Wrap(
             spacing: 16,
             runSpacing: 14,
-            children: const [
+            children: [
               AppButton(
-                text: 'Написать в Telegram',
+                text: l10n.heroBtnTelegram,
                 icon: Icons.send_rounded,
                 url: PortfolioData.telegramUrl,
               ),
               AppButton(
-                text: 'Email',
+                text: l10n.heroBtnEmail,
                 icon: Icons.alternate_email_rounded,
                 url: PortfolioData.emailUrl,
                 filled: false,
               ),
               AppButton(
-                text: 'Скачать резюме',
+                text: l10n.heroBtnResume,
                 icon: Icons.download_rounded,
                 url: PortfolioData.resumeAsset,
                 filled: false,
