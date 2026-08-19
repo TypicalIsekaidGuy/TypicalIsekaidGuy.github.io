@@ -31,7 +31,7 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final width = MediaQuery.of(context).size.width;
-    final compact = width < 860;
+    final compact = width < 980;
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: compact ? 20 : 48, vertical: 18),
@@ -52,6 +52,7 @@ class NavBar extends StatelessWidget {
           ),
           const Spacer(),
           if (!compact) ...[
+            _NavItem(l10n.navServices, () => _scrollTo('services')),
             _NavItem(l10n.navAbout, () => _scrollTo('about')),
             _NavItem(l10n.navExperience, () => _scrollTo('experience')),
             _NavItem(l10n.navSkills, () => _scrollTo('skills')),

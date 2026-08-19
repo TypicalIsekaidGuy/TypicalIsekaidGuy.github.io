@@ -330,4 +330,89 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get footerResumeUpdated => 'resume.pdf обновлено 10.08.2026';
+
+  @override
+  String get navServices => 'Услуги';
+
+  @override
+  String get servicesLabel => 'Услуги';
+
+  @override
+  String get servicesTitle => 'Кому и чем я могу помочь';
+
+  @override
+  String get servicesIntro => 'Три формата сотрудничества — выберите свой.';
+
+  @override
+  String get service1Tag => 'B2B · Напрямую';
+
+  @override
+  String get service1Title => 'Для бизнеса, который пишет напрямую';
+
+  @override
+  String get service1Text =>
+      'Сделал много небольших проектов (на пару дней разработки) и немало крупных — например, CardanoMining и NFTMining, а также множество других приложений.';
+
+  @override
+  String get service1Point1 =>
+      'Небольшие задачи: фичи, фиксы, интеграции — от 2 дней разработки';
+
+  @override
+  String get service1Point2 =>
+      'Крупные продукты: CardanoMining, NFTMining и другие полноценные приложения';
+
+  @override
+  String get service1Point3 =>
+      'Полный цикл: архитектура → разработка → релиз → поддержка';
+
+  @override
+  String get service1Cta => 'Обсудить проект';
+
+  @override
+  String get service2Tag => 'Фриланс · Менторство';
+
+  @override
+  String get service2Title => 'Для фриланс-заказчиков и учеников';
+
+  @override
+  String get service2Text =>
+      'Тот же опыт — через фриланс-платформы. А если хотите учиться: преподаю Android-разработку и менторю разработчиков.';
+
+  @override
+  String get service2Point1 =>
+      'Фриланс-проекты любого масштаба — тот же стек, то же качество';
+
+  @override
+  String get service2Point2 =>
+      'Менторство: Kotlin, Jetpack Compose, Clean Architecture';
+
+  @override
+  String get service2Point3 => 'Код-ревью, помощь с архитектурой и карьерой';
+
+  @override
+  String get service2Cta => 'Записаться на созвон';
+
+  @override
+  String get service3Tag => 'Найм · Full-time';
+
+  @override
+  String get service3Title => 'Для эйчаров и владельцев бизнеса';
+
+  @override
+  String get service3Text =>
+      '5+ лет в продуктовых командах. Компании, где я работал:';
+
+  @override
+  String get service3Point1 =>
+      'Fintech EdTech: три приложения — инвестиции, бюджет, сообщество инвесторов';
+
+  @override
+  String get service3Point2 =>
+      'Крупная соцсеть: offline-first, рефакторинг legacy';
+
+  @override
+  String get service3Point3 => 'AR-экосистема и исследование шифрования';
+
+  @override
+  String get service3Cta => 'Скачать резюме';
 }

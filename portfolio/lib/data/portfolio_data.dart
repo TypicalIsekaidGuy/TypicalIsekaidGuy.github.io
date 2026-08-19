@@ -51,6 +51,22 @@ class PortfolioData {
     ['Gradle', 'Git / GitHub', 'Android Studio', 'Jira', 'Agile'],
     ['Kotlin Multiplatform', 'Compose Multiplatform'],
   ];
+
+  // ------------------------------------------------------ company links ---
+
+  /// Компании, где работал Сергей. url == null — публичный сайт не найден.
+  static const List<CompanyLink> companyLinks = [
+    CompanyLink('PRO.FINANSY', 'https://profinansy.ru'),
+    CompanyLink('GORA Studio', 'https://gora.studio'),
+    CompanyLink('ArwinApp', null),
+    CompanyLink('Zrenie 2.0', 'https://www.zrenie20.com'),
+  ];
+}
+
+class CompanyLink {
+  final String name;
+  final String? url;
+  const CompanyLink(this.name, this.url);
 }
 
 class StatItem {

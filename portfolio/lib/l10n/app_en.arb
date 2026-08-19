@@ -117,5 +117,35 @@
   "contactLocationTitle": "Location",
   "contactLocationValue": "Moscow, Russia · hybrid / remote",
   "footerMadeWith": "© 2026 Sergey Zhokhov. Made with Flutter 💙",
-  "footerResumeUpdated": "resume.pdf updated Aug 10, 2026"
+  "footerResumeUpdated": "resume.pdf updated Aug 10, 2026",
+
+  "navServices": "Services",
+
+  "servicesLabel": "Services",
+  "servicesTitle": "Who I can help and how",
+  "servicesIntro": "Three ways we can work together — pick yours.",
+
+  "service1Tag": "B2B · Direct",
+  "service1Title": "For businesses reaching out directly",
+  "service1Text": "I've shipped many small projects (a couple of dev days each) and quite a few large ones — like CardanoMining and NFTMining — plus many other production apps.",
+  "service1Point1": "Small tasks: new features, fixes, integrations — from 2 dev days",
+  "service1Point2": "Large products: CardanoMining, NFTMining and other full-scale apps",
+  "service1Point3": "Full cycle: architecture → development → release → support",
+  "service1Cta": "Discuss a project",
+
+  "service2Tag": "Freelance · Mentoring",
+  "service2Title": "For freelance clients and students",
+  "service2Text": "The same experience — available through freelance platforms. And if you want to learn: I teach Android development and mentor developers.",
+  "service2Point1": "Freelance projects of any size — same stack, same quality",
+  "service2Point2": "Mentoring: Kotlin, Jetpack Compose, Clean Architecture",
+  "service2Point3": "Code review, architecture help and career guidance",
+  "service2Cta": "Book a call",
+
+  "service3Tag": "Full-time · Hire",
+  "service3Title": "For HR and business owners",
+  "service3Text": "5+ years in product teams. Companies I've worked at:",
+  "service3Point1": "Fintech EdTech: three apps — investments, budget, investor community",
+  "service3Point2": "Social network at scale, offline-first, legacy refactoring",
+  "service3Point3": "AR ecosystem and encryption research projects",
+  "service3Cta": "Download CV"
 }

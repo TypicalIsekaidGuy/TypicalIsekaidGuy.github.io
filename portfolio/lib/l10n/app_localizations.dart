@@ -679,6 +679,156 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'resume.pdf updated Aug 10, 2026'**
   String get footerResumeUpdated;
+
+  /// No description provided for @navServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get navServices;
+
+  /// No description provided for @servicesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get servicesLabel;
+
+  /// No description provided for @servicesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Who I can help and how'**
+  String get servicesTitle;
+
+  /// No description provided for @servicesIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Three ways we can work together — pick yours.'**
+  String get servicesIntro;
+
+  /// No description provided for @service1Tag.
+  ///
+  /// In en, this message translates to:
+  /// **'B2B · Direct'**
+  String get service1Tag;
+
+  /// No description provided for @service1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'For businesses reaching out directly'**
+  String get service1Title;
+
+  /// No description provided for @service1Text.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'ve shipped many small projects (a couple of dev days each) and quite a few large ones — like CardanoMining and NFTMining — plus many other production apps.'**
+  String get service1Text;
+
+  /// No description provided for @service1Point1.
+  ///
+  /// In en, this message translates to:
+  /// **'Small tasks: new features, fixes, integrations — from 2 dev days'**
+  String get service1Point1;
+
+  /// No description provided for @service1Point2.
+  ///
+  /// In en, this message translates to:
+  /// **'Large products: CardanoMining, NFTMining and other full-scale apps'**
+  String get service1Point2;
+
+  /// No description provided for @service1Point3.
+  ///
+  /// In en, this message translates to:
+  /// **'Full cycle: architecture → development → release → support'**
+  String get service1Point3;
+
+  /// No description provided for @service1Cta.
+  ///
+  /// In en, this message translates to:
+  /// **'Discuss a project'**
+  String get service1Cta;
+
+  /// No description provided for @service2Tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Freelance · Mentoring'**
+  String get service2Tag;
+
+  /// No description provided for @service2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'For freelance clients and students'**
+  String get service2Title;
+
+  /// No description provided for @service2Text.
+  ///
+  /// In en, this message translates to:
+  /// **'The same experience — available through freelance platforms. And if you want to learn: I teach Android development and mentor developers.'**
+  String get service2Text;
+
+  /// No description provided for @service2Point1.
+  ///
+  /// In en, this message translates to:
+  /// **'Freelance projects of any size — same stack, same quality'**
+  String get service2Point1;
+
+  /// No description provided for @service2Point2.
+  ///
+  /// In en, this message translates to:
+  /// **'Mentoring: Kotlin, Jetpack Compose, Clean Architecture'**
+  String get service2Point2;
+
+  /// No description provided for @service2Point3.
+  ///
+  /// In en, this message translates to:
+  /// **'Code review, architecture help and career guidance'**
+  String get service2Point3;
+
+  /// No description provided for @service2Cta.
+  ///
+  /// In en, this message translates to:
+  /// **'Book a call'**
+  String get service2Cta;
+
+  /// No description provided for @service3Tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Full-time · Hire'**
+  String get service3Tag;
+
+  /// No description provided for @service3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'For HR and business owners'**
+  String get service3Title;
+
+  /// No description provided for @service3Text.
+  ///
+  /// In en, this message translates to:
+  /// **'5+ years in product teams. Companies I\'ve worked at:'**
+  String get service3Text;
+
+  /// No description provided for @service3Point1.
+  ///
+  /// In en, this message translates to:
+  /// **'Fintech EdTech: three apps — investments, budget, investor community'**
+  String get service3Point1;
+
+  /// No description provided for @service3Point2.
+  ///
+  /// In en, this message translates to:
+  /// **'Social network at scale, offline-first, legacy refactoring'**
+  String get service3Point2;
+
+  /// No description provided for @service3Point3.
+  ///
+  /// In en, this message translates to:
+  /// **'AR ecosystem and encryption research projects'**
+  String get service3Point3;
+
+  /// No description provided for @service3Cta.
+  ///
+  /// In en, this message translates to:
+  /// **'Download CV'**
+  String get service3Cta;
 }
 
 class _AppLocalizationsDelegate

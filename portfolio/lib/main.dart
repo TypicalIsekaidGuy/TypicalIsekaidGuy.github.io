@@ -6,6 +6,7 @@ import 'sections/contact_section.dart';
 import 'sections/experience_section.dart';
 import 'sections/hero_section.dart';
 import 'sections/nav_bar.dart';
+import 'sections/services_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/terminal_section.dart';
 import 'theme.dart';
@@ -80,6 +81,11 @@ class LandingPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const HeroSection(),
+                    SectionAnchor(
+                      sectionId: 'services',
+                      sectionKeys: sectionKeys,
+                      child: const ServicesSection(),
+                    ),
                     SectionAnchor(
                       sectionId: 'about',
                       sectionKeys: sectionKeys,

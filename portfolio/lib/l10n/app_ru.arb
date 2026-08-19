@@ -117,5 +117,35 @@
   "contactLocationTitle": "Локация",
   "contactLocationValue": "Москва, Россия · гибрид / удалённо",
   "footerMadeWith": "© 2026 Сергей Жохов. Сделано на Flutter 💙",
-  "footerResumeUpdated": "resume.pdf обновлено 10.08.2026"
+  "footerResumeUpdated": "resume.pdf обновлено 10.08.2026",
+
+  "navServices": "Услуги",
+
+  "servicesLabel": "Услуги",
+  "servicesTitle": "Кому и чем я могу помочь",
+  "servicesIntro": "Три формата сотрудничества — выберите свой.",
+
+  "service1Tag": "B2B · Напрямую",
+  "service1Title": "Для бизнеса, который пишет напрямую",
+  "service1Text": "Сделал много небольших проектов (на пару дней разработки) и немало крупных — например, CardanoMining и NFTMining, а также множество других приложений.",
+  "service1Point1": "Небольшие задачи: фичи, фиксы, интеграции — от 2 дней разработки",
+  "service1Point2": "Крупные продукты: CardanoMining, NFTMining и другие полноценные приложения",
+  "service1Point3": "Полный цикл: архитектура → разработка → релиз → поддержка",
+  "service1Cta": "Обсудить проект",
+
+  "service2Tag": "Фриланс · Менторство",
+  "service2Title": "Для фриланс-заказчиков и учеников",
+  "service2Text": "Тот же опыт — через фриланс-платформы. А если хотите учиться: преподаю Android-разработку и менторю разработчиков.",
+  "service2Point1": "Фриланс-проекты любого масштаба — тот же стек, то же качество",
+  "service2Point2": "Менторство: Kotlin, Jetpack Compose, Clean Architecture",
+  "service2Point3": "Код-ревью, помощь с архитектурой и карьерой",
+  "service2Cta": "Записаться на созвон",
+
+  "service3Tag": "Найм · Full-time",
+  "service3Title": "Для эйчаров и владельцев бизнеса",
+  "service3Text": "5+ лет в продуктовых командах. Компании, где я работал:",
+  "service3Point1": "Fintech EdTech: три приложения — инвестиции, бюджет, сообщество инвесторов",
+  "service3Point2": "Крупная соцсеть: offline-first, рефакторинг legacy",
+  "service3Point3": "AR-экосистема и исследование шифрования",
+  "service3Cta": "Скачать резюме"
 }

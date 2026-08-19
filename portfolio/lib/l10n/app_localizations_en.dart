@@ -330,4 +330,90 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get footerResumeUpdated => 'resume.pdf updated Aug 10, 2026';
+
+  @override
+  String get navServices => 'Services';
+
+  @override
+  String get servicesLabel => 'Services';
+
+  @override
+  String get servicesTitle => 'Who I can help and how';
+
+  @override
+  String get servicesIntro => 'Three ways we can work together — pick yours.';
+
+  @override
+  String get service1Tag => 'B2B · Direct';
+
+  @override
+  String get service1Title => 'For businesses reaching out directly';
+
+  @override
+  String get service1Text =>
+      'I\'ve shipped many small projects (a couple of dev days each) and quite a few large ones — like CardanoMining and NFTMining — plus many other production apps.';
+
+  @override
+  String get service1Point1 =>
+      'Small tasks: new features, fixes, integrations — from 2 dev days';
+
+  @override
+  String get service1Point2 =>
+      'Large products: CardanoMining, NFTMining and other full-scale apps';
+
+  @override
+  String get service1Point3 =>
+      'Full cycle: architecture → development → release → support';
+
+  @override
+  String get service1Cta => 'Discuss a project';
+
+  @override
+  String get service2Tag => 'Freelance · Mentoring';
+
+  @override
+  String get service2Title => 'For freelance clients and students';
+
+  @override
+  String get service2Text =>
+      'The same experience — available through freelance platforms. And if you want to learn: I teach Android development and mentor developers.';
+
+  @override
+  String get service2Point1 =>
+      'Freelance projects of any size — same stack, same quality';
+
+  @override
+  String get service2Point2 =>
+      'Mentoring: Kotlin, Jetpack Compose, Clean Architecture';
+
+  @override
+  String get service2Point3 =>
+      'Code review, architecture help and career guidance';
+
+  @override
+  String get service2Cta => 'Book a call';
+
+  @override
+  String get service3Tag => 'Full-time · Hire';
+
+  @override
+  String get service3Title => 'For HR and business owners';
+
+  @override
+  String get service3Text =>
+      '5+ years in product teams. Companies I\'ve worked at:';
+
+  @override
+  String get service3Point1 =>
+      'Fintech EdTech: three apps — investments, budget, investor community';
+
+  @override
+  String get service3Point2 =>
+      'Social network at scale, offline-first, legacy refactoring';
+
+  @override
+  String get service3Point3 => 'AR ecosystem and encryption research projects';
+
+  @override
+  String get service3Cta => 'Download CV';
 }
